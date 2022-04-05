@@ -1,3 +1,4 @@
+<!--
 <h1>calendario component</h1>
 <div class="month">
     <ul>
@@ -19,5 +20,15 @@
   <ul class="days">
     <li *ngFor="let number of dias"><a (click)="showDetail(number)">{{number}}</a></li>
   </ul>
+
+
+  <h5>Inline</h5>
+
+  -->
+  <p-calendar [(ngModel)]="value" [inline]="true" [showWeek]="true" (onSelect)="cambiaDia(value)"></p-calendar>
+
+  {{value}}
+  {{diaElegido}}
+
 
   <app-dia-detalle *ngIf="diaElegido"></app-dia-detalle>

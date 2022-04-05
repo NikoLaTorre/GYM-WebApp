@@ -3,7 +3,11 @@ import { CommonModule } from '@angular/common';
 import { ReservaScreenComponent } from './screens/reserva-screen/reserva-screen.component';
 import { CalendarioComponent } from './components/calendario/calendario.component';
 import { DiaDetalleComponent } from './components/dia-detalle/dia-detalle.component';
-
+import { CalendarModule } from 'primeng/calendar';
+import { BrowserModule } from "@angular/platform-browser";
+import { FormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from 
+    "@angular/platform-browser/animations";
 
 
 @NgModule({
@@ -13,10 +17,15 @@ import { DiaDetalleComponent } from './components/dia-detalle/dia-detalle.compon
     DiaDetalleComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    CalendarModule,
+    BrowserModule,
+    FormsModule,
+    BrowserAnimationsModule
   ],
   exports: [
     ReservaScreenComponent
-  ]
+  ],
+  bootstrap: [CalendarModule]
 })
 export class ReservasModule { }
