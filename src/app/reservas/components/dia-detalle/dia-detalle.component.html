@@ -1,8 +1,10 @@
 <p>dia-detalle works!</p>
 
 <ul>
-    <li *ngFor="let actividad of dia">
-        Hora: {{actividad.id}} <br>
-        Actividad: {{actividad.actividad}}
+    <li *ngFor="let actividad of filtrarDia(diaBD)">
+        <button type="button">
+            Hora: {{actividad.hora}} <br>
+            Actividad: {{actividad.actividad}}
+        </button>
     </li>
 </ul>

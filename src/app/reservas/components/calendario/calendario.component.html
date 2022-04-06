@@ -27,8 +27,4 @@
   -->
   <p-calendar [(ngModel)]="value" [inline]="true" [showWeek]="true" (onSelect)="cambiaDia(value)"></p-calendar>
 
-  {{value}}
-  {{diaElegido}}
-
-
-  <app-dia-detalle *ngIf="diaElegido"></app-dia-detalle>
+  <app-dia-detalle *ngIf="diaElegido" [dia]="diaElegido"></app-dia-detalle>

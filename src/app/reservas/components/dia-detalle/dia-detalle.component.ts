@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { LUNES, MARTES, MIERCOLES, JUEVES, VIERNES } from '../../BD-calendario';
+import { HORARIO } from '../../BD-calendario';
 
 @Component({
   selector: 'app-dia-detalle',
@@ -9,14 +9,18 @@ import { LUNES, MARTES, MIERCOLES, JUEVES, VIERNES } from '../../BD-calendario';
 })
 export class DiaDetalleComponent implements OnInit {
 
-  dia = LUNES;
-  //@Input() dia?: [];
+  diaBD = HORARIO;
+  @Input() dia?: number;
 
   constructor() {
-   }
+  }
 
   ngOnInit(): void {
 
+  }
+
+  filtrarDia(HORARIO: any[]): any[]{
+    return HORARIO.filter(d => d.dia == this.dia)
   }
 
 }
