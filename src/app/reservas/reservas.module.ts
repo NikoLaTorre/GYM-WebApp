@@ -7,6 +7,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ClaseDetalleModule } from '../clase-detalle/clase-detalle.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     CalendarModule,
     BrowserModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ClaseDetalleModule
   ],
   exports: [
     ReservaScreenComponent

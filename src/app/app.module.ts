@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ClaseDetalleComponent } from './clase-detalle/clase-detalle.component';
 import { ReservasUsuarioComponent } from './reservas-usuario/reservas-usuario.component';
 import { ClasesComponent } from './clases/clases.component';
+import { ClaseDetalleModule } from './clase-detalle/clase-detalle.module';
 
 
 
@@ -14,17 +15,16 @@ import { ClasesComponent } from './clases/clases.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    ClaseDetalleComponent,
     ReservasUsuarioComponent,
     ClasesComponent
   ],
   imports: [
     BrowserModule,
     ReservasModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ClaseDetalleModule
   ],
   exports: [
-    ClaseDetalleComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

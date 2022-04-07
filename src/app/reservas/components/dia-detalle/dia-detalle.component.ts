@@ -16,6 +16,8 @@ export class DiaDetalleComponent implements OnInit {
 
   claseElegida = 'Musculación';
 
+  texto = '';
+
   constructor() {
   }
 
@@ -29,11 +31,13 @@ export class DiaDetalleComponent implements OnInit {
 
   cambiarSeleccionado(i: number): void{
     this.btnElegido = i;
+    this.texto= '';
   }
 
   Reservar(hora: number, actividad: string):void{
     let infoReserva = {id: RESERVAS_USUARIOS.length, actividad: actividad, hora: hora, dia: this.dia.getDay(), mes: this.dia.getMonth(), year: this.dia.getFullYear()}
     RESERVAS_USUARIOS.push(infoReserva)
+    this.texto = 'Clase reservada!';
   }
 
 }
