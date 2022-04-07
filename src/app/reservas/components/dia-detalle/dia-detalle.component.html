@@ -1,10 +1,46 @@
-<p>dia-detalle works!</p>
-
 <ul>
-    <li *ngFor="let actividad of filtrarDia(diaBD)">
-        <button type="button">
+    <li *ngFor="let actividad of filtrarDia(diaBD); let i = index">
+        <button type="button" class="btn btn-outline-primary" (click)="cambiarSeleccionado(i)">
             Hora: {{actividad.hora}} <br>
             Actividad: {{actividad.actividad}}
         </button>
+        <div *ngIf="btnElegido == i">
+            <br>
+            <button class="btn btn-outline-info">Información de la clase</button>
+            <button class="btn btn-outline-success" (click)="Reservar(actividad.hora, actividad.actividad)">Reservar</button>
+            
+            <app-clase-detalle [claseElegida]="claseElegida"></app-clase-detalle>
+
+
+
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detalleClase">
+                Launch demo modal
+            </button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="detalleClase" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    
+                </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        <br>
     </li>
 </ul>

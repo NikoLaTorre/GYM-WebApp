@@ -9,11 +9,9 @@ import {CalendarModule} from 'primeng/calendar';
 })
 export class CalendarioComponent implements OnInit {
 
-  //date14: Date;
   value = new Date;
 
-  diaElegido?: number;
-
+  //diaElegido = new Date;
   constructor() {
    }
 
@@ -22,9 +20,9 @@ export class CalendarioComponent implements OnInit {
   }
 
   cambiaDia(date: Date):void{
-    this.diaElegido = date.getDay();
-    if (this.diaElegido == 1){
-    }
+    //this.diaElegido = date.getDay();
+    // if (this.diaElegido == 1){
+    // }
   }
 
 }

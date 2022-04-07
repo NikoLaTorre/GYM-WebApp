@@ -5,6 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ClaseDetalleComponent } from './clase-detalle/clase-detalle.component';
+import { ReservasUsuarioComponent } from './reservas-usuario/reservas-usuario.component';
+import { ClasesComponent } from './clases/clases.component';
 
 
 
@@ -12,12 +14,17 @@ import { ClaseDetalleComponent } from './clase-detalle/clase-detalle.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    ClaseDetalleComponent
+    ClaseDetalleComponent,
+    ReservasUsuarioComponent,
+    ClasesComponent
   ],
   imports: [
     BrowserModule,
     ReservasModule,
     AppRoutingModule
+  ],
+  exports: [
+    ClaseDetalleComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

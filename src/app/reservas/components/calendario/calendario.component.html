@@ -25,6 +25,6 @@
   <h5>Inline</h5>
 
   -->
-  <p-calendar [(ngModel)]="value" [inline]="true" [showWeek]="true" (onSelect)="cambiaDia(value)"></p-calendar>
+  <p-calendar [(ngModel)]="value" [inline]="true"></p-calendar>
 
-  <app-dia-detalle *ngIf="diaElegido" [dia]="diaElegido"></app-dia-detalle>
+  <app-dia-detalle *ngIf="value" [dia]="value"></app-dia-detalle>

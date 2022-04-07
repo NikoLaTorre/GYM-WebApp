@@ -1,0 +1,9 @@
+<p>reservas-usuario works!</p>
+
+<ul>
+    <li *ngFor="let reserva of reservasBD">
+        Clase: {{reserva.actividad}}
+        Hora: {{reserva.hora}}
+        Dia: {{reserva.dia}}/{{reserva.mes}}/{{reserva.year}}
+    </li>
+</ul>
