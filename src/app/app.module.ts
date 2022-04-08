@@ -4,10 +4,12 @@ import { ReservasModule } from './reservas/reservas.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ClaseDetalleComponent } from './clase-detalle/clase-detalle.component';
 import { ReservasUsuarioComponent } from './reservas-usuario/reservas-usuario.component';
 import { ClasesComponent } from './clases/clases.component';
 import { ClaseDetalleModule } from './clase-detalle/clase-detalle.module';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
 
 
 
@@ -22,7 +24,11 @@ import { ClaseDetalleModule } from './clase-detalle/clase-detalle.module';
     BrowserModule,
     ReservasModule,
     AppRoutingModule,
-    ClaseDetalleModule
+    ClaseDetalleModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    )
   ],
   exports: [
   ],

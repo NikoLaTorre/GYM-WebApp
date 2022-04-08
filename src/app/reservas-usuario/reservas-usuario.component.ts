@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RESERVAS_USUARIOS } from '../reservas/BD-calendario';
+import { DetalleReservasService } from '../detalle-reservas.service';
+import { Reservas } from '../reservas/reservas.model';
 
 @Component({
   selector: 'app-reservas-usuario',
@@ -8,11 +10,17 @@ import { RESERVAS_USUARIOS } from '../reservas/BD-calendario';
 })
 export class ReservasUsuarioComponent implements OnInit {
 
-  reservasBD = RESERVAS_USUARIOS;
+  reservasBD: Reservas[] = [];
 
-  constructor() { }
+  constructor(private reservasService: DetalleReservasService) { }
 
   ngOnInit(): void {
+    this.getReservas();
+  }
+
+  getReservas():void{
+    this.reservasService.getReservas(2)
+      .subscribe(reservas => this.reservasBD = reservas);
   }
 
 }

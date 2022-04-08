@@ -1,3 +1,5 @@
+import { Reservas } from "./reservas.model";
+
 export const HORARIO = [
     { id: 2, actividad: 'Musculación', hora: 8, dia: 1 },
     { id: 3, actividad: 'GAP', hora: 9, dia: 1 },
@@ -46,8 +48,8 @@ export const HORARIO = [
     { id: 50, actividad: 'Musculación', hora: 16, dia: 5 }
 ];
 
-export const RESERVAS_USUARIOS = [
-    { id: 0, actividad: 'musculación', hora: 8, dia: 15, mes: 1, year: 2022 }
+export const RESERVAS_USUARIOS: Reservas[] = [
+    {id: 1, idUsuario:1, actividad: 'funcional', hora: 12, dia: 1, mes: 1, year: 2022}
 ];
 
 export const CLASES = [
