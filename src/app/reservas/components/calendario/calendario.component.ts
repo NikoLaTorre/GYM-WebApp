@@ -10,6 +10,7 @@ import {CalendarModule} from 'primeng/calendar';
 export class CalendarioComponent implements OnInit {
 
   value = new Date;
+  today: Date = new Date();
 
   //diaElegido = new Date;
   constructor() {
