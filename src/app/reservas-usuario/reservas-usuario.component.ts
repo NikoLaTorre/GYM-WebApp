@@ -23,4 +23,9 @@ export class ReservasUsuarioComponent implements OnInit {
       .subscribe(reservas => this.reservasBD = reservas);
   }
 
+  delete(reserva: Reservas): void{
+    this.reservasBD = this.reservasBD.filter(r => r !== reserva);
+    this.reservasService.deleteReserva(reserva.id).subscribe();
+  }
+
 }

@@ -12,6 +12,10 @@ export class DetalleReservasService {
 
   private reservasUrl = 'api/reservas';
 
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
   constructor(private http: HttpClient) { }
 
   getReservas(idUsuario: number): Observable<Reservas[]>{  // Ver como filtrar por usuario
@@ -24,6 +28,14 @@ export class DetalleReservasService {
 
   addReserva(reserva: Reservas): Observable<Reservas>{
     return this.http.post<Reservas>(this.reservasUrl, reserva)
+      .pipe(
+        catchError(this.handleError<Reservas>('addReserva'))
+      );
+  }
+
+  deleteReserva(id: number): Observable<Reservas>{
+    const url = `${this.reservasUrl}/${id}`
+    return this.http.delete<Reservas>(url, this.httpOptions)
       .pipe(
         catchError(this.handleError<Reservas>('addReserva'))
       );
