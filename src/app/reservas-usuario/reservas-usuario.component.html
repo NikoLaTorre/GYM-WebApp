@@ -1,5 +1,6 @@
 <p>reservas-usuario works!</p>
 
+<p *ngIf="reservasBD.length == 0">No ha realizado una reserva.</p>
 <ul>
     <li *ngFor="let reserva of reservasBD">
         Clase: {{reserva.actividad}}

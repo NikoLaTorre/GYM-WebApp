@@ -10,6 +10,8 @@ import { ClaseDetalleModule } from './clase-detalle/clase-detalle.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -18,7 +20,9 @@ import { InMemoryDataService } from './in-memory-data.service';
     AppComponent,
     HomeComponent,
     ReservasUsuarioComponent,
-    ClasesComponent
+    ClasesComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
