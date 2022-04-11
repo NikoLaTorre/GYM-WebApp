@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from '../firebase.service';
 
 @Component({
   selector: 'app-register',
@@ -14,18 +15,16 @@ export class RegisterComponent implements OnInit {
   apellido='';
   dni=0;
 
-  constructor() { }
+  constructor(public firebaseService: FirebaseService) { }
 
   ngOnInit(): void {
   }
 
-  register():void{
-    console.log(this.email);
-    console.log(this.passwd);
-    console.log(this.chkPasswd);
-    console.log(this.nombre);
-    console.log(this.apellido);
-    console.log(this.dni);
+  async register(){
+    await this.firebaseService.signUp(this.email, this.passwd);
+    if (this.firebaseService.isLoggedIn){
+      //registrar que esta iniciada la sesion
+    }
   }
 
 }

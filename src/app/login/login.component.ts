@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
+import { FirebaseService } from '../firebase.service';
 
 @Component({
   selector: 'app-login',
@@ -11,15 +12,22 @@ export class LoginComponent implements OnInit {
   email='';
   passwd='';
 
-  constructor(public usersService: UsersService) { }
+  datoscuenta='';
+
+  constructor(public usersService: UsersService, public firebaseService: FirebaseService) { }
 
   ngOnInit(): void {
   }
 
-  login():void{
-    const user = {email: this.email, password: this.passwd};
-    this.usersService.login(user)
-      .subscribe(data => {console.log(data)});
+  async login(){
+    await this.firebaseService.signIn(this.email, this.passwd);
+    if (this.firebaseService.isLoggedIn){
+      //registrar que esta iniciada la sesion
+    }
+    if (localStorage.getItem('user') !== null){
+      this.datoscuenta = JSON.parse(localStorage.getItem('user')!).uid;
+    }
+    
   }
 
 }
