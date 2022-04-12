@@ -8,17 +8,17 @@ import { FirebaseService } from './firebase.service';
 })
 export class AppComponent implements OnInit{
   title = 'GYM Web App';
-  isSignedIn = false;
-  constructor(firebaseService: FirebaseService){
-
+  //isSignedIn = false;
+  constructor(public firebaseService: FirebaseService){
   }
 
   ngOnInit(): void {
     if (localStorage.getItem('user') !== null){
-      this.isSignedIn = true;
+      //this.isSignedIn = true;
     }
     else{
-      this.isSignedIn = false;
+      //this.isSignedIn = false;
     }
   }
+  
 }

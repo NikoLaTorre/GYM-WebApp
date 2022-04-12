@@ -1,6 +1,7 @@
 import { Component, OnInit,  } from '@angular/core';
 
 import {CalendarModule} from 'primeng/calendar';
+import { FirebaseService } from '../../../firebase.service';
 
 @Component({
   selector: 'app-calendario',
@@ -13,11 +14,12 @@ export class CalendarioComponent implements OnInit {
   today: Date = new Date();
 
   //diaElegido = new Date;
-  constructor() {
-   }
+  constructor(public firebaseService: FirebaseService) {
+  }
 
   ngOnInit(): void {
     //this.date14 = new Date();
+    this.firebaseService.isLoggedIn;
   }
 
   cambiaDia(date: Date):void{

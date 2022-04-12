@@ -21,7 +21,9 @@
                 </div>
             </div>
 
-            <button class="btn btn-outline-success" (click)="Reservar(actividad.hora, actividad.actividad)" [disabled] = "checkReserva(actividad.hora)">Reservar</button>
+            <button class="btn btn-outline-success" (click)="Reservar(actividad.hora, actividad.actividad)" [disabled] = "checkReserva(actividad.hora)" *ngIf="firebaseService.isLoggedIn">
+                Reservar
+            </button>
             <p *ngIf="texto">{{texto}}</p>
 
 

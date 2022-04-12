@@ -19,8 +19,10 @@ export class ReservasUsuarioComponent implements OnInit {
   }
 
   getReservas():void{
-    this.reservasService.getReservas(2)
-      .subscribe(reservas => this.reservasBD = reservas);
+    if (localStorage.getItem('user') !== null){
+      this.reservasService.getReservas(JSON.parse(localStorage.getItem('user')!).uid)
+        .subscribe(reservas => this.reservasBD = reservas);
+    }
   }
 
   delete(reserva: Reservas): void{

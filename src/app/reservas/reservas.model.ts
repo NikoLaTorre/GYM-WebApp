@@ -1,6 +1,6 @@
 export interface Reservas{
     id: number;
-    idUsuario: number;
+    idUsuario: string;
     actividad: string;
     hora: number;
     dia: number;

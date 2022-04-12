@@ -49,7 +49,6 @@ export const HORARIO = [
 ];
 
 export const RESERVAS_USUARIOS: Reservas[] = [
-    {id: 1, idUsuario:1, actividad: 'funcional', hora: 12, dia: 1, mes: 1, year: 2022}
 ];
 
 export const CLASES = [

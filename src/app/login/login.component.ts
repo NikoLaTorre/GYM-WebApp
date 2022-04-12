@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../users.service';
+import { Router } from '@angular/router';
 import { FirebaseService } from '../firebase.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   datoscuenta='';
 
-  constructor(public usersService: UsersService, public firebaseService: FirebaseService) { }
+  constructor(public firebaseService: FirebaseService, public router: Router) { }
 
   ngOnInit(): void {
   }
@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
     await this.firebaseService.signIn(this.email, this.passwd);
     if (this.firebaseService.isLoggedIn){
       //registrar que esta iniciada la sesion
+      this.router.navigate(['/'])
     }
     if (localStorage.getItem('user') !== null){
       this.datoscuenta = JSON.parse(localStorage.getItem('user')!).uid;

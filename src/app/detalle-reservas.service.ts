@@ -18,7 +18,7 @@ export class DetalleReservasService {
 
   constructor(private http: HttpClient) { }
 
-  getReservas(idUsuario: number): Observable<Reservas[]>{  // Ver como filtrar por usuario
+  getReservas(idUsuario: string): Observable<Reservas[]>{  // Ver como filtrar por usuario
     const url = `${this.reservasUrl}/?idUsuario=${idUsuario}`; // Ver como filtrar por usuario
     return this.http.get<Reservas[]>(url)
       .pipe(
