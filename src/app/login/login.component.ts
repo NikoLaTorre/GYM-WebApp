@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
   async login(){
     await this.firebaseService.signIn(this.email, this.passwd);
     if (this.firebaseService.isLoggedIn){
-      //registrar que esta iniciada la sesion
       this.router.navigate(['/'])
     }
     if (localStorage.getItem('user') !== null){

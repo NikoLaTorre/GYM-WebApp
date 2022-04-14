@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FirebaseService } from '../firebase.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class RegisterComponent implements OnInit {
   apellido='';
   dni=0;
 
-  constructor(public firebaseService: FirebaseService) { }
+  constructor(public firebaseService: FirebaseService, public router: Router) { }
 
   ngOnInit(): void {
   }
@@ -23,7 +24,7 @@ export class RegisterComponent implements OnInit {
   async register(){
     await this.firebaseService.signUp(this.email, this.passwd);
     if (this.firebaseService.isLoggedIn){
-      //registrar que esta iniciada la sesion
+      this.router.navigate(['/'])
     }
   }
 
