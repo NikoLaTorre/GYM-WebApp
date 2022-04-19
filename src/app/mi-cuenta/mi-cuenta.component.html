@@ -1,0 +1,72 @@
+<div class="container bootstrap snippets bootdey">
+    <div class="panel-body inf-content">
+        <div class="row">
+            <div class="col-md-4">
+                <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip" src="https://bootdey.com/img/Content/avatar/avatar7.png" data-original-title="Usuario"> 
+            </div>
+            <div class="col-md-6">
+                <strong>Información</strong><br>
+                <div class="table-responsive">
+                <table class="table table-user-information" *ngIf="usuario">
+                    <tbody>
+                        <tr>    
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-user  text-primary"></span>    
+                                    Nombre                                                
+                                </strong>
+                            </td>
+                            <td class="text-primary">
+                                {{usuario.nombre}}     
+                            </td>
+                        </tr>
+                        <tr>        
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-cloud text-primary"></span>  
+                                    Apellido                                                
+                                </strong>
+                            </td>
+                            <td class="text-primary">
+                                  {{usuario.apellido}}
+                            </td>
+                        </tr>
+                        <tr>        
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-envelope text-primary"></span> 
+                                    Email                                                
+                                </strong>
+                            </td>
+                            <td class="text-primary">
+                                {{usuario.email}} 
+                            </td>
+                        </tr>
+                        <tr>        
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-calendar text-primary"></span>
+                                    Clases disponibles {{getMonth()}}                              
+                                </strong>
+                            </td>
+                            <td class="text-primary">
+                                {{reservasDisponibles}}
+                                <button (click)="getReservasDisponibles()"></button>
+                            </td>
+                            
+                        </tr>                                    
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-grid gap-2 col-6 mx-auto" *ngIf="reservasDisponibles == 0">
+    <button class="btn btn-primary" type="button" (click)="agregarCreditos(3)">Comprar 3 créditos</button>
+    <button class="btn btn-primary" type="button" (click)="agregarCreditos(6)">Comprar 6 créditos</button>
+</div>
+
+<div *ngIf="usuario">
+    asdasd{{usuario.creditos}}
+</div>

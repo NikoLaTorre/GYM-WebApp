@@ -6,6 +6,7 @@ import { ReservasUsuarioComponent } from './reservas-usuario/reservas-usuario.co
 import { ClasesComponent } from './clases/clases.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { MiCuentaComponent } from './mi-cuenta/mi-cuenta.component';
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path:'clases', component: ClasesComponent},
   {path:'reservas', component: ReservasUsuarioComponent},
   {path:'login', component: LoginComponent},
-  {path:'register', component: RegisterComponent}
+  {path:'register', component: RegisterComponent},
+  {path:'cuenta', component: MiCuentaComponent}
 ];
 
 @NgModule({

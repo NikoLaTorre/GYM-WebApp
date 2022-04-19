@@ -1,6 +1,6 @@
 <ul>
     <li *ngFor="let actividad of filtrarDia(diaBD); let i = index">
-        <button type="button" class="btn btn-outline-primary" (click)="cambiarSeleccionado(i)">
+        <button type="button" class="btn btn-outline-primary" (click)="cambiarSeleccionado(i, actividad.hora)">
             Hora: {{actividad.hora}} <br>
             Actividad: {{actividad.actividad}}
         </button>
@@ -21,11 +21,10 @@
                 </div>
             </div>
 
-            <button class="btn btn-outline-success" (click)="Reservar(actividad.hora, actividad.actividad)" [disabled] = "checkReserva(actividad.hora)" *ngIf="firebaseService.isLoggedIn">
+            <button class="btn btn-outline-success" (click)="Reservar(actividad.hora, actividad.actividad)" [disabled]="disabled" *ngIf="firebaseService.isLoggedIn">
                 Reservar
             </button>
             <p *ngIf="texto">{{texto}}</p>
-
 
         </div>
         <br>

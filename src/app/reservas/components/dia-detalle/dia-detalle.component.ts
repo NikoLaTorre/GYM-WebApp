@@ -17,7 +17,7 @@ export class DiaDetalleComponent implements OnInit, OnChanges {
   diaBD = HORARIO;
   @Input() dia = new Date;
   btnElegido = -1;
-
+  disabled = true;
   claseElegida = 'Musculación';
 
   texto = '';
@@ -41,20 +41,26 @@ export class DiaDetalleComponent implements OnInit, OnChanges {
     return HORARIO.filter(d => d.dia == this.dia?.getDay())
   }
 
-  cambiarSeleccionado(i: number): void{
+  cambiarSeleccionado(i: number, hora: number): void{
     this.btnElegido = i;
-    this.texto= '';
+    this.texto += 'asd';
+    this.disabled = this.checkReserva(hora);
   }
   getReservas():void{
     if (localStorage.getItem('user') !== null){
-      this.reservasService.getReservas(JSON.parse(localStorage.getItem('user')!).uid)
+      this.reservasService.getReserva(JSON.parse(localStorage.getItem('user')!).uid)
         .subscribe(reservas => this.reservasBD = reservas);
     }
   }
 
   checkReserva(hora: number):boolean{
     for (let actividad of this.reservasBD){
-      if (actividad.hora == hora && actividad.dia == this.dia.getDate() && actividad.mes == this.dia.getMonth()){
+      if (actividad.hora == hora && actividad.dia == this.dia.getDate() && actividad.mes == this.dia.getMonth()+1){
+        return true;
+      }
+    }
+    if (localStorage.getItem('user') !== null){
+      if (this.reservasService.getReservasDisponibles(this.dia.getMonth()+1, JSON.parse(localStorage.getItem('user')!).uid) <= 0){
         return true;
       }
     }
@@ -62,9 +68,10 @@ export class DiaDetalleComponent implements OnInit, OnChanges {
   }
 
   Reservar(hora: number, actividad: string):void{
+    this.disabled = true;
     //this.reservas.push(new Reservas(RESERVAS_USUARIOS.length, actividad, hora, this.dia.getDay(), this.dia.getMonth(), this.dia.getFullYear()))
     if (localStorage.getItem('user') !== null){
-      let infoReserva = {idUsuario: JSON.parse(localStorage.getItem('user')!).uid, actividad: actividad, hora: hora, dia: this.dia.getDate(), mes: this.dia.getMonth(), year: this.dia.getFullYear()};
+      let infoReserva = {idUsuario: JSON.parse(localStorage.getItem('user')!).uid, actividad: actividad, hora: hora, dia: this.dia.getDate(), mes: this.dia.getMonth()+1, year: this.dia.getFullYear()};
       this.reservasService.addReserva(infoReserva as Reservas)
         .subscribe(reserva => {this.reservasBD.push(reserva)})
       this.texto = 'Clase reservada!';

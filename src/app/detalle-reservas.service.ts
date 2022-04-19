@@ -4,6 +4,9 @@ import { RESERVAS_USUARIOS } from './reservas/BD-calendario';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+import { Usuarios } from './usuarios.model';
+import { UsuariosService } from './usuarios-detalle.service';
+import { waitForAsync } from '@angular/core/testing';
 
 @Injectable({
   providedIn: 'root'
@@ -11,16 +14,25 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class DetalleReservasService {
 
   private reservasUrl = 'api/reservas';
+  reservasUsuario: Reservas[] = [];
+  usuario: Usuarios = {id: -1, idUsuario: "a", nombre: "b", apellido: "c", email: "d", creditos: 0};
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private usuariosService: UsuariosService) { }
 
-  getReservas(idUsuario: string): Observable<Reservas[]>{  // Ver como filtrar por usuario
-    const url = `${this.reservasUrl}/?idUsuario=${idUsuario}`; // Ver como filtrar por usuario
+  getReserva(idUsuario: string): Observable<Reservas[]>{  
+    const url = `${this.reservasUrl}/?idUsuario=${idUsuario}`; 
     return this.http.get<Reservas[]>(url)
+      .pipe(
+        catchError(this.handleError<Reservas[]>('getReservas', []))
+      )
+  }
+
+  getReservas(): Observable<Reservas[]>{  
+    return this.http.get<Reservas[]>(this.reservasUrl)
       .pipe(
         catchError(this.handleError<Reservas[]>('getReservas', []))
       )
@@ -41,6 +53,25 @@ export class DetalleReservasService {
       );
   }
 
+  getReservasDisponibles(mes: number, idUsuario: string): number{
+    this.usuariosService.getUsuario(idUsuario)
+      .subscribe(usuario => {this.usuario = usuario[0]});
+    let resDisp = this.usuario.creditos;
+    this.getReserva(idUsuario)
+      .subscribe(reservas => { this.reservasUsuario = reservas
+      }
+    );
+    for (let reserva of this.reservasUsuario){
+      if (reserva.mes == mes){
+        resDisp -= 1;
+      };
+    }
+    return resDisp;
+  }
+    //Cambiar forma en que se cuenta las reservas disponibles. Ya no hace falta este metodo.. o si?
+    
+
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
@@ -53,6 +84,4 @@ export class DetalleReservasService {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
-}
-
-}
+  }}

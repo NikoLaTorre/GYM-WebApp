@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from './firebase.service';
+import { UsuariosService } from './usuarios-detalle.service';
+import { Usuarios } from './usuarios.model';
 
 @Component({
   selector: 'app-root',
@@ -9,15 +11,19 @@ import { FirebaseService } from './firebase.service';
 export class AppComponent implements OnInit{
   title = 'GYM Web App';
   //isSignedIn = false;
-  constructor(public firebaseService: FirebaseService){
+
+  usuario: Usuarios | undefined;
+
+  constructor(public firebaseService: FirebaseService, private usuariosService: UsuariosService){
   }
 
   ngOnInit(): void {
+    this.getUsuarios();
+  }
+  getUsuarios():void{
     if (localStorage.getItem('user') !== null){
-      //this.isSignedIn = true;
-    }
-    else{
-      //this.isSignedIn = false;
+      this.usuariosService.getUsuario(JSON.parse(localStorage.getItem('user')!).uid)
+        .subscribe(usuario => this.usuario = usuario[0]);
     }
   }
   

@@ -20,7 +20,7 @@ export class ReservasUsuarioComponent implements OnInit {
 
   getReservas():void{
     if (localStorage.getItem('user') !== null){
-      this.reservasService.getReservas(JSON.parse(localStorage.getItem('user')!).uid)
+      this.reservasService.getReserva(JSON.parse(localStorage.getItem('user')!).uid)
         .subscribe(reservas => this.reservasBD = reservas);
     }
   }

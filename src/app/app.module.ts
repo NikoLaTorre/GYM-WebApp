@@ -13,7 +13,8 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
-import {AngularFireModule} from '@angular/fire/compat'
+import {AngularFireModule} from '@angular/fire/compat';
+import { MiCuentaComponent } from './mi-cuenta/mi-cuenta.component'
 
 
 
@@ -24,7 +25,8 @@ import {AngularFireModule} from '@angular/fire/compat'
     ReservasUsuarioComponent,
     ClasesComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    MiCuentaComponent
   ],
   imports: [
     BrowserModule,
