@@ -18,9 +18,9 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.getUsuarios();
+    this.getUsuario();
   }
-  getUsuarios():void{
+  getUsuario():void{
     if (localStorage.getItem('user') !== null){
       this.usuariosService.getUsuario(JSON.parse(localStorage.getItem('user')!).uid)
         .subscribe(usuario => this.usuario = usuario[0]);

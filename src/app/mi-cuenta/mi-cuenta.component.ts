@@ -44,7 +44,7 @@ export class MiCuentaComponent implements OnInit {
       this.usuario.creditos += value;
       await this.usuariosService.updateUsuario(this.usuario)
         .subscribe(() => this.reservasDisponibles += this.usuario!.creditos);
-      
+      this.getReservasDisponibles();
     }
   }
 

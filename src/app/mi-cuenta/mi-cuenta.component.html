@@ -49,8 +49,8 @@
                                     Clases disponibles {{getMonth()}}                              
                                 </strong>
                             </td>
-                            <td class="text-primary">
-                                {{reservasDisponibles}}
+                            <td class="text-primary" *ngIf="usuario">
+                                {{usuario.creditos}}
                                 <button (click)="getReservasDisponibles()"></button>
                             </td>
                             
@@ -62,11 +62,11 @@
         </div>
     </div>
 </div>
-<div class="d-grid gap-2 col-6 mx-auto" *ngIf="reservasDisponibles == 0">
+<div class="d-grid gap-2 col-6 mx-auto" *ngIf="usuario!.creditos == 0">
     <button class="btn btn-primary" type="button" (click)="agregarCreditos(3)">Comprar 3 créditos</button>
     <button class="btn btn-primary" type="button" (click)="agregarCreditos(6)">Comprar 6 créditos</button>
 </div>
 
-<div *ngIf="usuario">
+<!-- <div *ngIf="usuario">
     asdasd{{usuario.creditos}}
-</div>
+</div> -->
