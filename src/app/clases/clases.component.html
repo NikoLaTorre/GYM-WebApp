@@ -1,7 +1,9 @@
-<button type="button" class="btn btn-primary" (click)="claseElegida = 'Musculación'">Musculación</button>
-<button type="button" class="btn btn-secondary" (click)="claseElegida = 'GAP'">GAP</button>
-<button type="button" class="btn btn-success" (click)="claseElegida = 'HIIT'">HIIT</button>
-<button type="button" class="btn btn-danger" (click)="claseElegida = 'Funcional'">Funcional</button>
+<div class="container">
+    <button type="button" class="btn btn-primary col-2" (click)="claseElegida = 'Musculación'">Musculación</button>
+    <button type="button" class="btn btn-secondary col-2" (click)="claseElegida = 'GAP'">GAP</button>
+    <button type="button" class="btn btn-success col-2" (click)="claseElegida = 'HIIT'">HIIT</button>
+    <button type="button" class="btn btn-danger col-2" (click)="claseElegida = 'Funcional'">Funcional</button>
+</div>
 <br>
 
 <app-clase-detalle [claseElegida]="claseElegida"></app-clase-detalle>

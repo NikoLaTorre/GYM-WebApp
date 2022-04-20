@@ -4,7 +4,6 @@
         Bienvenido {{usuario.nombre}}!
     </p>
 </div>
-<button (click)="getUsuario()"></button>
 
 
 <nav class="navbar navbar-expand-sm bg-light">
@@ -40,4 +39,4 @@
     </ul>
   </nav>
 <!--<app-reserva-screen></app-reserva-screen> -->
-<router-outlet></router-outlet>
+<router-outlet (activate)="onActivate($event)"></router-outlet>

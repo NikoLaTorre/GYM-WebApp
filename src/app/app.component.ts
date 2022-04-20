@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { FirebaseService } from './firebase.service';
 import { UsuariosService } from './usuarios-detalle.service';
 import { Usuarios } from './usuarios.model';
@@ -10,7 +10,6 @@ import { Usuarios } from './usuarios.model';
 })
 export class AppComponent implements OnInit{
   title = 'GYM Web App';
-  //isSignedIn = false;
 
   usuario: Usuarios | undefined;
 
@@ -25,6 +24,9 @@ export class AppComponent implements OnInit{
       this.usuariosService.getUsuario(JSON.parse(localStorage.getItem('user')!).uid)
         .subscribe(usuario => this.usuario = usuario[0]);
     }
+  }
+  onActivate($event : string){
+    this.getUsuario();
   }
   
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { FirebaseService } from '../firebase.service';
 
@@ -11,8 +11,8 @@ export class LoginComponent implements OnInit {
 
   email='';
   passwd='';
-
   datoscuenta='';
+  @Output() userLogin = new EventEmitter<string>();
 
   constructor(public firebaseService: FirebaseService, public router: Router) { }
 
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     if (localStorage.getItem('user') !== null){
       this.datoscuenta = JSON.parse(localStorage.getItem('user')!).uid;
     }
-    
+    this.userLogin.emit('alfredo')
   }
 
 }

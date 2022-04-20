@@ -1,14 +1,4 @@
-<p>reservas-usuario works!</p>
-
 <p *ngIf="reservasBD.length == 0; else reservasTrue">No ha realizado una reserva.</p>
-<!-- <ul class="list-group">
-    <li *ngFor="let reserva of reservasBD" class="list-group-item">
-        <span>Clase: {{reserva.actividad}} </span>
-        Hora: {{reserva.hora}}
-        Dia: {{reserva.dia}}/{{reserva.mes}}/{{reserva.year}}
-        <button type="button" (click)="delete(reserva)">Eliminar</button>
-    </li>
-</ul> -->
 
 <ng-template #reservasTrue>
     <table class="table">
