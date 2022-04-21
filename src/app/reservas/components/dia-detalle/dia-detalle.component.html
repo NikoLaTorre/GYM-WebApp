@@ -25,6 +25,7 @@
                 Reservar
             </button>
             <p *ngIf="texto">{{texto}}</p>
+            <p *ngIf="(firebaseService.isLoggedIn) && (usuario?.creditos == 0)">No dispone de creditos para reservar una clase.</p>
 
         </div>
         <br>
