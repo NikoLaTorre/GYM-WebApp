@@ -15,7 +15,7 @@ export class DetalleReservasService {
 
   private reservasUrl = 'api/reservas';
   reservasUsuario: Reservas[] = [];
-  usuario: Usuarios = {id: -1, idUsuario: "a", nombre: "b", apellido: "c", email: "d", creditos: 0};
+  usuario: Usuarios = {id: -1, idUsuario: "a", nombre: "b", apellido: "c", email: "d", creditos: 0, rol: "e"};
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

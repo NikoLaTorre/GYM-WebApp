@@ -5,4 +5,5 @@ export interface Usuarios {
     apellido: string;
     email: string;
     creditos: number;
+    rol: string;
 }

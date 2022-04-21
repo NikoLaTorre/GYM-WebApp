@@ -1,0 +1,20 @@
+<p>reservas-manager works!</p>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Clase</th>
+        <th scope="col">Hora</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let reserva of reservasBD">
+            <td>{{filtrarUsuario(reserva.idUsuario).nombre}}</td>
+            <td>{{filtrarUsuario(reserva.idUsuario).apellido}}</td>
+            <td>{{reserva.actividad}}</td>
+            <td>{{reserva.hora}}</td>
+        </tr>
+    </tbody>
+</table>

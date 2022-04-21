@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
   async register(){
     await this.firebaseService.signUp(this.email, this.passwd);
     if (this.firebaseService.isLoggedIn){
-      let usuario = {idUsuario: JSON.parse(localStorage.getItem('user')!).uid, nombre: this.nombre ,apellido: this.apellido, email: this.email}
+      let usuario = {idUsuario: JSON.parse(localStorage.getItem('user')!).uid, nombre: this.nombre ,apellido: this.apellido, email: this.email, rol: "cliente"}
       this.usuariosService.addUsuario(usuario as Usuarios)
         .subscribe(usuario => {this.usuariosBD.push(usuario)})
       this.router.navigate(['/'])
