@@ -9,7 +9,9 @@ import { Usuarios } from './usuarios.model';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const reservas: Reservas[] = [
-      {id: 1, idUsuario: "IxpA4TaMRkfrxvPyCfSey7rQyak1", actividad: "prueba", hora: 8, dia: 4, mes:5, year:2022}
+      {id: 1, idUsuario: "IxpA4TaMRkfrxvPyCfSey7rQyak1", actividad: "prueba", hora: 8, dia: 4, mes:5, year:2022},
+      {id: 2, idUsuario: "IxpA4TaMRkfrxvPyCfSey7rQyak1", actividad: "prueba", hora: 9, dia: 4, mes:5, year:2022},
+      {id: 3, idUsuario: "IxpA4TaMRkfrxvPyCfSey7rQyak1", actividad: "prueba", hora: 10, dia: 4, mes:5, year:2022}
     ];
     const usuarios: Usuarios[] = [
       {id: 1, idUsuario: "IxpA4TaMRkfrxvPyCfSey7rQyak1", nombre: "Juan", apellido: "Perez", email: "a@a.com", creditos: 0, rol: "cliente"},
