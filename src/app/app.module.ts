@@ -17,6 +17,7 @@ import {AngularFireModule} from '@angular/fire/compat';
 import { MiCuentaComponent } from './mi-cuenta/mi-cuenta.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ReservasManagerComponent } from './reservas-manager/reservas-manager.component'
+import { CalendarModule } from 'primeng/calendar';
 
 
 
@@ -36,6 +37,7 @@ import { ReservasManagerComponent } from './reservas-manager/reservas-manager.co
     BrowserModule,
     FormsModule,
     ReservasModule,
+    CalendarModule,
     AppRoutingModule,
     ClaseDetalleModule,
     HttpClientModule,

@@ -3,6 +3,8 @@ import { UsuariosService } from '../usuarios-detalle.service';
 import { DetalleReservasService } from '../detalle-reservas.service';
 import { Reservas } from '../reservas/reservas.model';
 import { Usuarios } from '../usuarios.model';
+import {CalendarModule} from 'primeng/calendar';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-reservas-manager',
@@ -12,7 +14,9 @@ import { Usuarios } from '../usuarios.model';
 export class ReservasManagerComponent implements OnInit {
 
   reservasBD: Reservas[] = [];
-  usuariosBD: Usuarios[] = []
+  usuariosBD: Usuarios[] = [];
+  date = new Date();
+  texto='hola';
 
   constructor(private usuariosService: UsuariosService, private reservasService: DetalleReservasService) { }
 
@@ -21,9 +25,10 @@ export class ReservasManagerComponent implements OnInit {
     this.getUsuarios();
   }
 
-  getReservas(): void{
+  getReservas(){
     this.reservasService.getReservas()
-      .subscribe(reservas => this.reservasBD = reservas);
+      .subscribe({next: reservas => this.reservasBD = reservas,
+                  complete: () => this.cambiaFecha()});
   }
 
   getUsuarios(): void{
@@ -33,6 +38,11 @@ export class ReservasManagerComponent implements OnInit {
 
   filtrarUsuario(uid: string): Usuarios{
     return (this.usuariosBD.filter(usuario => usuario.idUsuario == uid))[0]
+  }
+
+  cambiaFecha(){
+    this.reservasBD =  this.reservasBD.filter(reserva => (reserva.dia == this.date.getDate() && reserva.mes == this.date.getMonth()+1 && reserva.year == this.date.getFullYear()));
+    this.texto += "aaa";
   }
 
 }
