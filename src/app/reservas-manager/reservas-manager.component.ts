@@ -16,7 +16,6 @@ export class ReservasManagerComponent implements OnInit {
   reservasBD: Reservas[] = [];
   usuariosBD: Usuarios[] = [];
   date = new Date();
-  texto='hola';
 
   constructor(private usuariosService: UsuariosService, private reservasService: DetalleReservasService) { }
 
@@ -41,8 +40,9 @@ export class ReservasManagerComponent implements OnInit {
   }
 
   cambiaFecha(){
-    this.reservasBD =  this.reservasBD.filter(reserva => (reserva.dia == this.date.getDate() && reserva.mes == this.date.getMonth()+1 && reserva.year == this.date.getFullYear()));
-    this.texto += "aaa";
+    this.reservasBD =  this.reservasBD.filter(reserva => (reserva.dia == this.date.getDate() 
+    && reserva.mes == this.date.getMonth()+1 
+    && reserva.year == this.date.getFullYear()));
   }
 
 }
