@@ -1,6 +1,7 @@
 <div class="field col-12 md:col-4">
   <p-calendar [(ngModel)]="date" [showIcon]="true" inputId="icon" (ngModelChange)="getReservas()"></p-calendar>
 </div>
+<p-dropdown [options]="actividades" [(ngModel)]="actividadSeleccionada" placeholder="Actividad" optionLabel="name" [showClear]="false"></p-dropdown>
 
 <table class="table table-striped">
     <thead>
@@ -12,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let reserva of reservasBD">
+        <tr *ngFor="let reserva of (reservasBD | filtroActividad:actividadSeleccionada.name)">
             <td>{{filtrarUsuario(reserva.idUsuario).nombre}}</td>
             <td>{{filtrarUsuario(reserva.idUsuario).apellido}}</td>
             <td>{{reserva.actividad}}</td>

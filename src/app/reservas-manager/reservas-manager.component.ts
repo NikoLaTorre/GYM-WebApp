@@ -3,8 +3,6 @@ import { UsuariosService } from '../usuarios-detalle.service';
 import { DetalleReservasService } from '../detalle-reservas.service';
 import { Reservas } from '../reservas/reservas.model';
 import { Usuarios } from '../usuarios.model';
-import {CalendarModule} from 'primeng/calendar';
-import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-reservas-manager',
@@ -16,6 +14,8 @@ export class ReservasManagerComponent implements OnInit {
   reservasBD: Reservas[] = [];
   usuariosBD: Usuarios[] = [];
   date = new Date();
+  actividadSeleccionada = {name: 'Todos'};
+  actividades = [{name: "Todos"}, {name: "Musculación"}, {name: "GAP"}, {name: "Funcional"}, {name: "Ritmos"}, {name: "HIIT"}];
 
   constructor(private usuariosService: UsuariosService, private reservasService: DetalleReservasService) { }
 

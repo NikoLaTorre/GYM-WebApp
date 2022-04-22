@@ -8,6 +8,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ClaseDetalleModule } from '../clase-detalle/clase-detalle.module';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ClaseDetalleModule } from '../clase-detalle/clase-detalle.module';
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
-    ClaseDetalleModule
+    ClaseDetalleModule,
+    DropdownModule
   ],
   exports: [
     ReservaScreenComponent

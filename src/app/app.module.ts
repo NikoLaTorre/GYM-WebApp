@@ -18,6 +18,8 @@ import { MiCuentaComponent } from './mi-cuenta/mi-cuenta.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ReservasManagerComponent } from './reservas-manager/reservas-manager.component'
 import { CalendarModule } from 'primeng/calendar';
+import {DropdownModule} from 'primeng/dropdown';
+import { FiltroActividadPipe } from './pipes/filtro-actividad.pipe';
 
 
 
@@ -31,13 +33,15 @@ import { CalendarModule } from 'primeng/calendar';
     RegisterComponent,
     MiCuentaComponent,
     NavBarComponent,
-    ReservasManagerComponent
+    ReservasManagerComponent,
+    FiltroActividadPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReservasModule,
     CalendarModule,
+    DropdownModule,
     AppRoutingModule,
     ClaseDetalleModule,
     HttpClientModule,
@@ -52,6 +56,7 @@ import { CalendarModule } from 'primeng/calendar';
       messagingSenderId: "436460872299",
       appId: "1:436460872299:web:18ba4978aebe6cc5dd872e"
     }),
+
   ],
   exports: [
   ],

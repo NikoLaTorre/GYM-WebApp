@@ -15,13 +15,14 @@ import { Usuarios } from 'src/app/usuarios.model';
 })
 export class DiaDetalleComponent implements OnInit, OnChanges {
 
-
+  uid = JSON.parse(localStorage.getItem('user')!).uid;
   diaBD = HORARIO;
   @Input() dia = new Date;
   btnElegido = -1;
   disabled = true;
   claseElegida = 'Musculación';
   usuario: Usuarios | undefined;
+  usuarios: Usuarios[] = [];
 
   texto = '';
 
@@ -35,6 +36,7 @@ export class DiaDetalleComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.getReservas();
     this.getUsuario();
+    this.getUsuarios();
   }
 
   getUsuario(): void{
@@ -42,6 +44,10 @@ export class DiaDetalleComponent implements OnInit, OnChanges {
       this.usuarioService.getUsuario(JSON.parse(localStorage.getItem('user')!).uid)
         .subscribe(usuario => this.usuario = usuario[0]);
     }
+  }
+  getUsuarios():void{
+    this.usuarioService.getUsuarios()
+      .subscribe(usuarios => this.usuarios = usuarios);
   }
   
   ngOnChanges(changes: SimpleChanges): void {
@@ -91,7 +97,7 @@ export class DiaDetalleComponent implements OnInit, OnChanges {
     this.disabled = true;
     //this.reservas.push(new Reservas(RESERVAS_USUARIOS.length, actividad, hora, this.dia.getDay(), this.dia.getMonth(), this.dia.getFullYear()))
     if (localStorage.getItem('user') !== null){
-      let infoReserva = {idUsuario: JSON.parse(localStorage.getItem('user')!).uid, actividad: actividad, hora: hora, dia: this.dia.getDate(), mes: this.dia.getMonth()+1, year: this.dia.getFullYear()};
+      let infoReserva = {idUsuario: this.usuario?.idUsuario, actividad: actividad, hora: hora, dia: this.dia.getDate(), mes: this.dia.getMonth()+1, year: this.dia.getFullYear()};
       this.reservasService.addReserva(infoReserva as Reservas)
         .subscribe(reserva => {this.reservasBD.push(reserva)})
       this.texto = 'Clase reservada!';
