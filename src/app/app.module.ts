@@ -12,7 +12,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AngularFireModule} from '@angular/fire/compat';
 import { MiCuentaComponent } from './mi-cuenta/mi-cuenta.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -56,6 +56,7 @@ import { FiltroActividadPipe } from './pipes/filtro-actividad.pipe';
       messagingSenderId: "436460872299",
       appId: "1:436460872299:web:18ba4978aebe6cc5dd872e"
     }),
+    ReactiveFormsModule
 
   ],
   exports: [

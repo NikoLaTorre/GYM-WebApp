@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FirebaseService } from '../firebase.service';
 import { UsuariosService } from '../usuarios-detalle.service';
@@ -12,23 +13,30 @@ import { Usuarios } from '../usuarios.model';
 export class RegisterComponent implements OnInit {
 
   usuariosBD: Usuarios[] = [];
+  registerForm: FormGroup;
 
-  email='';
-  passwd='';
-  chkPasswd='';
-  nombre='';
-  apellido='';
-  dni=0;
-
-  constructor(public firebaseService: FirebaseService, public router: Router, private usuariosService: UsuariosService) { }
+  constructor(public firebaseService: FirebaseService, public router: Router, 
+    private usuariosService: UsuariosService,
+    private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.registerForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: this.fb.group({
+        passwd: ['', [Validators.required]],
+        chkPasswd: ['', [Validators.required]],
+      }, this.passwordMatchValidator),
+      nombre: ['', [Validators.required]],
+      apellido: ['', [Validators.required]],
+      dni: ['', [Validators.required]]
+    })
   }
 
   async register(){
-    await this.firebaseService.signUp(this.email, this.passwd);
+    await this.firebaseService.signUp(this.registerForm.get('email')?.value, this.registerForm.get('passwd')?.value);
     if (this.firebaseService.isLoggedIn){
-      let usuario = {idUsuario: JSON.parse(localStorage.getItem('user')!).uid, nombre: this.nombre ,apellido: this.apellido, email: this.email, rol: "cliente"}
+      let usuario = {idUsuario: JSON.parse(localStorage.getItem('user')!).uid, nombre: this.registerForm.get('nombre')?.value,
+      apellido: this.registerForm.get('apellido')?.value, email: this.registerForm.get('email')?.value, rol: "cliente", creditos: 0}
       this.usuariosService.addUsuario(usuario as Usuarios)
         .subscribe(usuario => {this.usuariosBD.push(usuario)})
       this.router.navigate(['/'])
@@ -40,6 +48,11 @@ export class RegisterComponent implements OnInit {
       this.usuariosService.getUsuarios()
         .subscribe(usuario => this.usuariosBD = usuario);
     }
+  }
+
+  passwordMatchValidator(g: FormGroup){   // ver como aplicar el estilo
+    return g.get('passwd')!.value === g.get('chkPasswd')!.value
+      ? null : {'mismatch': true};
   }
 
 }

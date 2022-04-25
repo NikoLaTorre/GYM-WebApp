@@ -1,31 +1,39 @@
 <div class="d-grid gap-2 col-4 mx-auto">
-    <form class="px-4 py-3">
-        <div class="form-group">
-            <label for="exampleDropdownFormEmail1">Email</label>
-            <input type="email" class="form-control" id="exampleDropdownFormEmail1" name="email" [(ngModel)]="email" placeholder="email@example.com" required="required">
+    <form class="px-4 py-3" [formGroup]="registerForm">
+        <div class="panel panel-primary">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" formControlName="email" placeholder="email@example.com" 
+                [ngClass]="{'is-invalid': registerForm.get('email')!.errors && (registerForm.get('email')!.touched || registerForm.get('email')!.dirty)}">
+            </div>
+            <div class="form-group">
+                <label for="pass">Contraseña</label>
+                <input type="password" class="form-control" id="pass" formControlName="passwd" name="passwd" placeholder="Password"
+                [ngClass]="{'is-invalid': registerForm.get('passwd')!.errors && (registerForm.get('passwd')!.touched || registerForm.get('passwd')!.dirty)}">
+            </div>
+            <div class="form-group">
+                <label for="confirmPass">Confirmar Contraseña</label>
+                <input type="password" class="form-control" id="confirmPass" formControlName="chkPasswd" name="passwd" placeholder="Password"
+                [ngClass]="{'is-invalid': (registerForm.get('chkPasswd')!.errors) && (registerForm.get('chkPasswd')!.touched || registerForm.get('chkPasswd')!.dirty)}">
+            </div>
+            <div class="form-group">
+                <label for="name">Nombre</label>
+                <input type="text" class="form-control" id="name" formControlName="nombre" name="nombre" placeholder="Nombre"
+                [ngClass]="{'is-invalid': registerForm.get('nombre')!.errors && (registerForm.get('nombre')!.touched || registerForm.get('nombre')!.dirty)}">
+            </div>
+            <div class="form-group">
+                <label for="last">Apellido</label>
+                <input type="text" class="form-control" id="last" formControlName="apellido" name="apellido" placeholder="Apellido"
+                [ngClass]="{'is-invalid': registerForm.get('apellido')!.errors && (registerForm.get('apellido')!.touched || registerForm.get('apellido')!.dirty)}">
+            </div>
+            <div class="form-group">
+                <label for="dni">DNI</label>
+                <input type="number" class="form-control" id="dni" formControlName="dni" name="dni" placeholder="DNI"
+                [ngClass]="{'is-invalid': registerForm.get('dni')!.errors && (registerForm.get('dni')!.touched || registerForm.get('dni')!.dirty)}">
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary" (click)="register()">Registrarse</button>
         </div>
-        <div class="form-group">
-            <label for="exampleDropdownFormPassword1">Contraseña</label>
-            <input type="password" class="form-control" id="exampleDropdownFormPassword1" [(ngModel)]="passwd" name="passwd" placeholder="Password" required="required">
-        </div>
-        <div class="form-group">
-            <label for="exampleDropdownFormPassword1">Confirmar Contraseña</label>
-            <input type="password" class="form-control" id="exampleDropdownFormPassword1" [(ngModel)]="chkPasswd" name="passwd" placeholder="Password" required="required">
-        </div>
-        <div class="form-group">
-            <label for="exampleDropdownFormPassword1">Nombre</label>
-            <input type="text" class="form-control" id="exampleDropdownFormPassword1" [(ngModel)]="nombre" name="nombre" placeholder="Nombre" required="required">
-        </div>
-        <div class="form-group">
-            <label for="exampleDropdownFormPassword1">Apellido</label>
-            <input type="text" class="form-control" id="exampleDropdownFormPassword1" [(ngModel)]="apellido" name="apellido" placeholder="Apellido" required="required">
-        </div>
-        <div class="form-group">
-            <label for="exampleDropdownFormPassword1">DNI</label>
-            <input type="number" class="form-control" id="exampleDropdownFormPassword1" [(ngModel)]="dni" name="dni" placeholder="DNI" required="required">
-        </div>
-        <br>
-        <button type="submit" class="btn btn-primary" (click)="register()">Registrarse</button>
     </form>
     <div class="dropdown-divider"></div>
     <a class="dropdown-item" routerLink="/login">Iniciar Sesion</a>
