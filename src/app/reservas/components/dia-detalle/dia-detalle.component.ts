@@ -23,7 +23,7 @@ export class DiaDetalleComponent implements OnInit, OnChanges {
   claseElegida = 'Musculación';
   usuario: Usuarios | undefined;
   usuarios: Usuarios[] = [];
-
+  tipoUsuario: string | null;
   texto = '';
 
   reservasBD: Reservas[] = [];
@@ -37,6 +37,7 @@ export class DiaDetalleComponent implements OnInit, OnChanges {
     this.getReservas();
     this.getUsuario();
     this.getUsuarios();
+    this.tipoUsuario = localStorage.getItem('tipoCuenta');
   }
 
   getUsuario(): void{

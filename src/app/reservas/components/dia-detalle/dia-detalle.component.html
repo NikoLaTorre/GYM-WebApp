@@ -26,7 +26,7 @@
             </button>
             <p *ngIf="texto">{{texto}}</p>
             <p *ngIf="(firebaseService.isLoggedIn) && (usuario?.creditos == 0)">No dispone de creditos para reservar una clase.</p>
-            <p-dropdown [options]="usuarios" [(ngModel)]="usuario" placeholder="Actividad" optionLabel="nombre" [showClear]="false"
+            <p-dropdown [options]="usuarios" [(ngModel)]="usuario" placeholder="Actividad" optionLabel="nombre" [showClear]="false" *ngIf="tipoUsuario == 'entrada'"
             ></p-dropdown>
         </div>
         <br>

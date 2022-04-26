@@ -22,6 +22,7 @@ export class NavBarComponent implements OnInit {
     if (localStorage.getItem('user') !== null){
       this.usuariosService.getUsuario(JSON.parse(localStorage.getItem('user')!).uid)
         .subscribe(usuario => this.usuario = usuario[0]);
+      localStorage.setItem('tipoCuenta', this.usuario!.rol);
     }
   }
   onActivate($event : string){

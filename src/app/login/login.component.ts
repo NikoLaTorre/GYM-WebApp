@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     if (localStorage.getItem('user') !== null){
       this.datoscuenta = JSON.parse(localStorage.getItem('user')!).uid;
     }
-    this.userLogin.emit('alfredo')
+    this.userLogin.emit('alfredo'); //por qué puse esto?
   }
 
 }

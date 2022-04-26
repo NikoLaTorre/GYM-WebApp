@@ -9,19 +9,22 @@ import { RegisterComponent } from './register/register.component';
 import { MiCuentaComponent } from './mi-cuenta/mi-cuenta.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ReservasManagerComponent } from './reservas-manager/reservas-manager.component';
+import { ClasesModule } from './clases/clases.module';
+import { RutaIndefinidaComponent } from './ruta-indefinida/ruta-indefinida.component';
 
 const routes: Routes = [
   {path: '', component:NavBarComponent,
     children:[
     {path:'home', component: HomeComponent},
     {path:'horario', component: ReservaScreenComponent},
-    {path:'clases', component: ClasesComponent},
+    {path:'clases', loadChildren: () => import('./clases/clases.module').then(m => m.ClasesModule)},
     {path:'misReservas', component: ReservasUsuarioComponent},
     {path:'cuenta', component: MiCuentaComponent},
     {path:'reservas', component: ReservasManagerComponent}
     ]},
   {path:'login', component: LoginComponent},
   {path:'register', component: RegisterComponent},
+  {path:'**', loadChildren: () => import('./ruta-indefinida/ruta-indefinida.module').then(m => m.RutaIndefinidaModule)}
 ];
 
 @NgModule({

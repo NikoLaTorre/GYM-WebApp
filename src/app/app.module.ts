@@ -20,6 +20,7 @@ import { ReservasManagerComponent } from './reservas-manager/reservas-manager.co
 import { CalendarModule } from 'primeng/calendar';
 import {DropdownModule} from 'primeng/dropdown';
 import { FiltroActividadPipe } from './pipes/filtro-actividad.pipe';
+import { RutaIndefinidaComponent } from './ruta-indefinida/ruta-indefinida.component';
 
 
 
@@ -34,7 +35,8 @@ import { FiltroActividadPipe } from './pipes/filtro-actividad.pipe';
     MiCuentaComponent,
     NavBarComponent,
     ReservasManagerComponent,
-    FiltroActividadPipe
+    FiltroActividadPipe,
+    RutaIndefinidaComponent
   ],
   imports: [
     BrowserModule,
