@@ -22,10 +22,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: this.fb.group({
-        passwd: ['', [Validators.required]],
-        chkPasswd: ['', [Validators.required]],
-      }, this.passwordMatchValidator),
+      passwd: ['', [Validators.required]],
+      chkPasswd: ['', [Validators.required]],
       nombre: ['', [Validators.required]],
       apellido: ['', [Validators.required]],
       dni: ['', [Validators.required]]
@@ -50,9 +48,8 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  passwordMatchValidator(g: FormGroup){   // ver como aplicar el estilo
-    return g.get('passwd')!.value === g.get('chkPasswd')!.value
-      ? null : {'mismatch': true};
+  passwordMatchValidator(passwd: string, chkpasswd: string){   // ver como aplicar el estilo
+    
   }
 
 }
