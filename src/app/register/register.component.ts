@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FirebaseService } from '../firebase.service';
 import { UsuariosService } from '../usuarios-detalle.service';
@@ -13,11 +13,11 @@ import { Usuarios } from '../usuarios.model';
 export class RegisterComponent implements OnInit {
 
   usuariosBD: Usuarios[] = [];
-  registerForm: FormGroup;
+  registerForm: UntypedFormGroup;
 
   constructor(public firebaseService: FirebaseService, public router: Router, 
     private usuariosService: UsuariosService,
-    private fb: FormBuilder) { }
+    private fb: UntypedFormBuilder) { }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
